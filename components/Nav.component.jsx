@@ -12,12 +12,10 @@ const Nav = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   useEffect(() => {
-    const setUpProviders = async () => {
+    (async () => {
       const res = await getProviders();
       setProviders(res);
-    }
-
-    setUpProviders();
+    })();
   }, []);
 
   return (
@@ -30,12 +28,12 @@ const Nav = () => {
           height={30}
           className='object-contain'
         />
-        <p className='logo_text'>Promptify</p>
+        <p className='logo_text'>Promptopia</p>
       </Link>
 
       {/* Desktop Navigation */}
       <div className='sm:flex hidden'>
-        { session?.user ? (
+        {session?.user ? (
           <div className='flex gap-3 md:gap-5'>
             <Link href='/create-prompt' className='black_btn'>
               Create Post
